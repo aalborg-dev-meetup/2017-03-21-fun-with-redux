@@ -4,6 +4,7 @@ import thunkMiddleware from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
 
 const log = new Log('redux-console');
+log.info('Welcome'.yellow);
 
 const reducer = (state, action) => {
 	log.info('Received action in reducer:'.green, action.type);
@@ -25,9 +26,14 @@ store.subscribe((arg1, arg2, arg3) => {
 });
 
 const enable = () => ({ type: 'ENABLE' });
-const disableWithDelay = () => (dispatch) => {
-	setTimeout(() => dispatch({ type: 'DISABLE' }), 1500);
-};
+
+function disableWithDelay() {
+	return function(dispatch) {
+		setTimeout(function() {
+			dispatch({ type: 'DISABLE' })	
+		}, 5000);
+	}
+}
 
 store.dispatch(enable());
 store.dispatch(disableWithDelay());

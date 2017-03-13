@@ -17,12 +17,11 @@ const reducer = (state, action) => {
 	return state;
 }
 
-const store = createStore(reducer, { });
+const store = createStore(reducer, { enabled: null });
 
 store.subscribe((arg1, arg2, arg3) => {
 	log.info('Store updated'.blue, JSON.stringify(store.getState()));
 });
-
 
 store.dispatch({ type: 'ENABLE' });
 store.dispatch({ type: 'DISABLE' });
