@@ -2,7 +2,8 @@ import { bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import MillenniumFalcon from '../components/millennium-falcon';
 
-import * as actions from '../actions';
+import * as types from '../types';
+import { onChooseEndpoint } from '../actions';
 
 const mapStateToProps = (state) => {
 	const  { endpoint, data } = state;
@@ -14,15 +15,17 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-	const res = bindActionCreators({
-		onChooseEndpoint: (side) => (dispatch, getState) => {
-			dispatch({ type: actions.PICK_SIDE, payload: side });
-		}
+	/*
+	return {
+		onChooseEndpoint: (side) => dispatch((dispatch, getState) => {
+			dispatch({ type: types.PICK_SIDE, payload: side });
+		})
+	};
+	*/
+
+	return bindActionCreators({
+		onChooseEndpoint
 	}, dispatch);
-
-	console.log(res);
-
-	return res;
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MillenniumFalcon);

@@ -1,3 +1,6 @@
-export const PICK_SIDE = 'PICK_SIDE';
-export const LOADING = 'LOADING';
-export const UPDATE_DATA = 'UPDATE_DATA';
+import * as types from './types';
+
+export const onChooseEndpoint = (endpoint) => (dispatch, getState) => {
+	console.log('Choosing endppoint', endpoint);
+	dispatch({ type: types.PICK_SIDE, payload: endpoint });
+};
