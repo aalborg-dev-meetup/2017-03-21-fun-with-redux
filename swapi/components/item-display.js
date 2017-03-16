@@ -3,19 +3,27 @@ import React from 'react';
 export default class ItemDisplay extends React.PureComponent {
 
 	static propTypes = {
-		onExpandToggle: React.PropTypes.func.isRequired,
-
 		children: React.PropTypes.shape({
+			url: React.PropTypes.string.isRequired,
 			name: React.PropTypes.string.isRequired,
 			kind: React.PropTypes.string.isRequired,
-			isExpanded: React.PropTypes.bool,
 		})
 	};
 
+	state = {
+		isExpanded: false,
+	};
+
+	handleExpandToggle = () => {
+		this.setState((state) => ({ isExpanded: !state.isExpanded }));
+	};
+
 	render() {
-		const { children: { name, isExpanded }, onExpandToggle} = this.props;
+		const { children: { name }, onExpandToggle} = this.props;
+		const { isExpanded } = this.state;
+
 		return (<span>
-			<button className="btn btn-xs btn-default" onClick={onExpandToggle} aria-label={isExpanded ? 'Collapse' : 'Expand'}>
+			<button className="btn btn-xs btn-default" onClick={this.handleExpandToggle} aria-label={isExpanded ? 'Collapse' : 'Expand'}>
 				{isExpanded
 					? <i className="fa fa-chevron-circle-up" />
 					: <i className="fa fa-chevron-circle-down" />}

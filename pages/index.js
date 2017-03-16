@@ -17,7 +17,7 @@ export default class IndexPage extends React.PureComponent {
 
 		fetch('https://swapi.co/api/' + endpoint + '/')
 			.then((response) => response.json())
-			.then((data) => data.results.map((item) => ({ ...item, name: item.title || item.name })))
+			.then((data) => data.results.map((item) => ({ ...item, name: item.title || item.name, kind: endpoint })))
 			.then((list) => {
 				this.setState({ list, loading: false });
 			});
