@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Provider } from 'react-redux';
 
 import store from '../swapi/store';
-import MillenniumFalcon from '../swapi/components/millennium-falcon-connected';
+import MillenniumFalconConnected from '../swapi/components/millennium-falcon-connected';
 
 export default class ReduxPage extends React.PureComponent {
 	render() {
@@ -17,7 +17,7 @@ export default class ReduxPage extends React.PureComponent {
 			</Head>
 			<div className="container">
 				<h1>Lots of fun with Redux</h1>
-				<MillenniumFalcon />
+				<MillenniumFalconConnected />
 				<div><Link href="/"><a>No Redux</a></Link></div>
 			</div>
 		</div></Provider>);

@@ -10,22 +10,21 @@ export default class IndexPage extends React.PureComponent {
 		endpoint: null,
 		list: [],
 		loading: false,
-	}
+	};
 
 	handleChooseEndpoint = (endpoint) => {
 		this.setState({ endpoint, loading: true });
 
-		fetch('http://swapi.co/api/' + endpoint)
+		fetch('https://swapi.co/api/' + endpoint + '/')
 			.then((response) => response.json())
 			.then((data) => data.results.map((item) => ({ ...item, name: item.title || item.name })))
 			.then((list) => {
 				this.setState({ list, loading: false });
 			});
-	}
+	};
 
 	render() {
 		const { endpoint, list, loading } = this.state;
-		const { onChooseEndpoint } = this.props;
 
 		return (<div>
 			<Head>

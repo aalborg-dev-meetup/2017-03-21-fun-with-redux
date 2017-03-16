@@ -11,9 +11,9 @@ const reducer = (state, action) => {
 
 	switch(action.type) {
 		case 'ENABLE':
-			return { ...state, enabled: true }
+			return { ...state, enabled: true, pending: false }
 		case 'DISABLE':
-			return { ...state, enabled: false}
+			return { ...state, enabled: false, pending: false } 
 	}
 
 	return state;
@@ -21,7 +21,7 @@ const reducer = (state, action) => {
 
 const store = createStore(reducer, { }, applyMiddleware(thunkMiddleware));
 
-store.subscribe((arg1, arg2, arg3) => {
+store.subscribe(() => {
 	log.info('Store updated'.blue, JSON.stringify(store.getState()));
 });
 
@@ -34,6 +34,12 @@ function disableWithDelay() {
 		}, 5000);
 	}
 }
+
+/*
+const disableWithDelay = () => (dispatch) => {
+	setTimeout(() => dispatch({ type: 'DISABLE' }), 5000);
+};
+*/
 
 store.dispatch(enable());
 store.dispatch(disableWithDelay());
