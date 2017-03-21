@@ -27,19 +27,9 @@ store.subscribe(() => {
 
 const enable = () => ({ type: 'ENABLE' });
 
-function disableWithDelay() {
-	return function(dispatch) {
-		setTimeout(function() {
-			dispatch({ type: 'DISABLE' })	
-		}, 5000);
-	}
-}
-
-/*
 const disableWithDelay = () => (dispatch) => {
 	setTimeout(() => dispatch({ type: 'DISABLE' }), 5000);
 };
-*/
 
 store.dispatch(enable());
 store.dispatch(disableWithDelay());

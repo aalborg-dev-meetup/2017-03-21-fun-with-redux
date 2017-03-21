@@ -2,6 +2,14 @@ import thunkMiddleware from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
 import * as types from './types';
 
+const defaultData = {
+	endpoint: null,
+	data: {
+		/** will contain response from SWAPI, indexed by endpiont */
+	},
+	operations: 0,
+};
+
 const reducer = (state, action) => {
 	console.log(action.type, action.payload);
 
@@ -40,14 +48,6 @@ const reducer = (state, action) => {
 	}
 
 	return state;
-};
-
-const defaultData = {
-	endpoint: null,
-	data: {
-		/** will contain response from SWAPI, indexed by endpiont */
-	},
-	operations: 0,
 };
 
 export default createStore(reducer, defaultData, applyMiddleware(thunkMiddleware));

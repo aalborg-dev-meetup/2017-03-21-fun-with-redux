@@ -18,10 +18,11 @@ export const onChooseEndpoint = (endpoint) => (dispatch, getState) => {
 				dispatch({
 					type: types.SET_DATA,
 					payload: {
-						endpoint,
+						endpoint: endpoint,
 						data: loadedData,
 					}
 				});
+
 				dispatch({ type: types.DONE_LOAD });
 
 				if (json.next) {
@@ -30,6 +31,9 @@ export const onChooseEndpoint = (endpoint) => (dispatch, getState) => {
 
 				return loadedData;
 			})
+			.then(() => console.log('after the error'))
+			.catch(() => console.error('Oops'))
+
 	}
 
 	return loadData('https://swapi.co/api/' + endpoint + '/')

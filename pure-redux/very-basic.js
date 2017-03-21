@@ -9,17 +9,17 @@ const reducer = (state, action) => {
 
 	switch(action.type) {
 		case 'ENABLE':
-			return { ...state, enabled: true }
+			return { ...state, enabled: true };
 		case 'DISABLE':
 			return { ...state, enabled: false}
 	}
 
 	return state;
-}
+};
 
 const store = createStore(reducer, { enabled: null });
 
-store.subscribe((arg1, arg2, arg3) => {
+store.subscribe(() => {
 	log.info('Store updated'.blue, JSON.stringify(store.getState()));
 });
 
