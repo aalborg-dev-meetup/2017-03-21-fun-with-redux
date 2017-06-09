@@ -4,6 +4,8 @@
 
 `yarn start-next`
 
+Then open http://localhost:3008/ in your browser
+
 (* npm also works, but yarn is faster)
 
 ## Background
