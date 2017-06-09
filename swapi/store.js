@@ -10,9 +10,7 @@ const defaultData = {
 	operations: 0,
 };
 
-const reducer = (state, action) => {
-	console.log(action.type, action.payload);
-
+const reducer = (state = {}, action) => {
 	switch(action.type) {
 		case types.SET_DATA: {
 			const { endpoint, data } = action.payload;
