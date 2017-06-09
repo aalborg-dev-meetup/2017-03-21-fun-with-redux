@@ -31,7 +31,6 @@ export const onChooseEndpoint = (endpoint) => (dispatch, getState) => {
 
 				return loadedData;
 			})
-			.then(() => console.log('after the error'))
 			.catch(() => console.error('Oops'))
 
 	}
