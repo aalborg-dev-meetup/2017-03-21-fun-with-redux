@@ -1,32 +1,14 @@
 import React from 'react';
 import Head from 'next/head'
 import Link from 'next/link'
+import { Provider } from 'react-redux';
 
-import MillenniumFalcon from '../swapi/components/millennium-falcon';
+import store from '../swapi/store';
+import MillenniumFalconConnected from '../swapi/components/millennium-falcon-connected';
 
-export default class IndexPage extends React.PureComponent {
-
-	state = {
-		endpoint: null,
-		list: [],
-		loading: false,
-	};
-
-	handleChooseEndpoint = (endpoint) => {
-		this.setState({ endpoint, loading: true });
-
-		fetch('https://swapi.co/api/' + endpoint + '/')
-			.then((response) => response.json())
-			.then((data) => data.results.map((item) => ({ ...item, name: item.title || item.name, kind: endpoint })))
-			.then((list) => {
-				this.setState({ list, loading: false });
-			});
-	};
-
+export default class ReduxPage extends React.PureComponent {
 	render() {
-		const { endpoint, list, loading } = this.state;
-
-		return (<div>
+		return (<Provider store={store}><div>
 			<Head>
 				<title>Fun With Redux</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -34,10 +16,10 @@ export default class IndexPage extends React.PureComponent {
 				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
 			</Head>
 			<div className="container">
-				<h1>No Fun Without Redux</h1>
-				<MillenniumFalcon endpoint={endpoint} list={list} loading={loading}  onChooseEndpoint={this.handleChooseEndpoint} />
-				<div><Link href="/redux"><a>Go Redux</a></Link></div>
+				<h1>Lots of fun with Redux</h1>
+				<MillenniumFalconConnected />
 			</div>
-		</div>);
+		</div></Provider>);
 	}
 }
+

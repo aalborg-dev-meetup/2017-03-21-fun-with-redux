@@ -6,7 +6,8 @@
   "author": "Wouter M. van Vliet <wouter@interpotential.com>",
   "license": "MIT",
   "scripts": {
-    "start-next": "next -p 3008"
+    "start-next": "next -p 3008",
+	"start": "next"
   },
   "dependencies": {
     "babel-cli": "^6.24.0",
