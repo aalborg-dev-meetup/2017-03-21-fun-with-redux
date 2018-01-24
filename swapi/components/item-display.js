@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class ItemDisplay extends React.PureComponent {
 
 	static propTypes = {
-		children: React.PropTypes.shape({
-			url: React.PropTypes.string.isRequired,
-			name: React.PropTypes.string.isRequired,
-			kind: React.PropTypes.string.isRequired,
+		children: PropTypes.shape({
+			url: PropTypes.string.isRequired,
+			name: PropTypes.string.isRequired,
+			kind: PropTypes.string.isRequired,
 		})
 	};
 

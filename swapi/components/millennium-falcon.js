@@ -1,15 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ItemDisplay from './item-display';
 
 export default class MillenniumFalcon extends React.PureComponent {
 
 	static propTypes = {
-		onChooseEndpoint: React.PropTypes.func.isRequired,
-		list: React.PropTypes.arrayOf(React.PropTypes.shape({
-			url: React.PropTypes.string.isRequired,
+		onChooseEndpoint: PropTypes.func.isRequired,
+		list: PropTypes.arrayOf(PropTypes.shape({
+			url: PropTypes.string.isRequired,
 		})).isRequired,
-		side: React.PropTypes.string,
+		side: PropTypes.string,
 	};
 
 	render() {
